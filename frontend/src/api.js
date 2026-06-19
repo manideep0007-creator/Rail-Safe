@@ -3,8 +3,8 @@ import { io } from 'socket.io-client';
 import { alerts, stats, trackHealth, trains } from './data/mockData';
 
 const client = axios.create({
-baseURL: 'https://rail-safe-production.up.railway.app/api',
-timeout: 8000
+  baseURL: import.meta.env.VITE_API_URL,
+  timeout: 8000
 });
 
 
@@ -76,7 +76,7 @@ export async function getImages() {
 }
 
 export function createSocket() {
-  const configured = import.meta.env.VITE_SOCKET_URL;
-  const baseURL = configured || (client.defaults.baseURL.startsWith('http') ? client.defaults.baseURL.replace('/api', '') : 'https://rail-safe-production.up.railway.app');
-  return io(baseURL, { transports: ['websocket', 'polling'] });
+  return io('https://rail-safe-production.up.railway.app', {
+    transports: ['websocket', 'polling']
+  });
 }
