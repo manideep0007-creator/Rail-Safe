@@ -3,9 +3,10 @@ import { io } from 'socket.io-client';
 import { alerts, stats, trackHealth, trains } from './data/mockData';
 
 const client = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || '/api',
-  timeout: 8000
+baseURL: 'https://rail-safe-production.up.railway.app/api',
+timeout: 8000
 });
+
 
 client.interceptors.request.use((config) => {
   const token = localStorage.getItem('railsafe_token');
