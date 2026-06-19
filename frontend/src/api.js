@@ -76,6 +76,6 @@ export async function getImages() {
 
 export function createSocket() {
   const configured = import.meta.env.VITE_SOCKET_URL;
-  const baseURL = configured || (client.defaults.baseURL.startsWith('http') ? client.defaults.baseURL.replace('/api', '') : 'http://localhost:5000');
+  const baseURL = configured || (client.defaults.baseURL.startsWith('http') ? client.defaults.baseURL.replace('/api', '') : 'https://rail-safe-production.up.railway.app');
   return io(baseURL, { transports: ['websocket', 'polling'] });
 }

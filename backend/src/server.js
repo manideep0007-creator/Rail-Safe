@@ -55,6 +55,6 @@ app.use((error, _req, res, _next) => {
   res.status(error.status || 500).json({ message: error.message || 'Internal server error' });
 });
 
-server.listen(port, () => {
-  console.log(`RailSafe API running on http://localhost:${port}`);
+server.listen(port, '0.0.0.0', () => {
+  console.log(`RailSafe API running on port ${port}`);
 });
